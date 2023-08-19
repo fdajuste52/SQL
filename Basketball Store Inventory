@@ -1,0 +1,30 @@
+CREATE TABLE basketballstore(id INTEGER PRIMARY KEY, name TEXT, quantity INTEGER, price INTEGER, aisle INTEGER);
+/*Created table with columns consisting of primary identifying key, name as a TEXT, qnatity as an INTEGER, price as an INTEGER, and aisle as an INTEGER*/
+
+/* Inserting product values into the Table*/
+INSERT INTO basketballstore VALUES(1, "WILSON NCAA Final Four Basketball", 34, 19, 4);
+INSERT INTO basketballstore VALUES(2, "WILSON NBA Forge Series Indoor/Outdoor Basketballs", 34, 23, 4);
+INSERT INTO basketballstore VALUES(3, "GlowCity Glow in The Dark Basketball- Glowing Red Basket Ball", 26, 23, 4);
+INSERT INTO basketballstore VALUES(4, "Spalding Outdoor Basketballs, Performance Rubber Cover Stands", 19, 25, 4);
+INSERT INTO basketballstore VALUES(5, "WILSON NBA DRV Series Indoor/Outdoor Basketballs", 37, 24, 4);
+INSERT INTO basketballstore VALUES(6, "Little Tikes Easy Score Basketball Set", 15, 35, 7);
+INSERT INTO basketballstore VALUES(7, "WIN.MAX Portable Basketball Hoop Goal System 4.8-10ft Adjustable 44in Backboard", 10, 179, 8);
+INSERT INTO basketballstore VALUES(8, "Yohood Basketball Hoop Outdoor 10ft Adjustable, Portable Basketball Hoop Goal System", 9, 167, 8);
+INSERT INTO basketballstore VALUES(9, "Yaheetech 7.2-9.2ft Basketball Hoop Backboard System Portable Removeable Basketball Hoop & Goals", 12, 89, 8);
+INSERT INTO basketballstore VALUES(10, "Aimking Basketball Hoop 44 Inch Impact Backboard 4.8FT-10FT Telescoping Adjustment Basketball Goal System ", 7, 249, 8);
+INSERT INTO basketballstore VALUES(11, "PEAK High Top Mens Basketball Shoes Lou Williams Streetball Master Breathable Non Slip Outdoor Sneakers Cushioning Workout Shoes for Fitness", 22, 79, 2);
+INSERT INTO basketballstore VALUES(12, "Nike Unisex-Adult Basketball Shoe", 31, 96, 2);
+INSERT INTO basketballstore VALUES(13, "Nike Air Zoom Crossover Basketball Shoes", 26, 53, 2);
+INSERT INTO basketballstore VALUES(14, "Jordan mens Sneaker", 41, 95, 2);
+INSERT INTO basketballstore VALUES(15, "Men's High Top Basketball Shoes Fashion Running Sneakers Non Slip Training Athletic Shoes", 17, 63, 2);
+
+SELECT * FROM basketballstore WHERE price < 100 ORDER BY aisle DESC;
+/*Selecting all of the products from table in which prices are less than 100 in order by aisle in descending order*/
+
+SELECT name FROM basketballstore WHERE aisle > 5 ORDER BY aisle;
+/*Selecting names of the products from table in which the aisle number is less than 5*/
+
+SELECT aisle, SUM(quantity) FROM basketballstore;
+/*Aggregating the sum of the quantity in an aisle of the table*/
+
+
