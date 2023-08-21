@@ -1,0 +1,88 @@
+CREATE TABLE marketplace (
+    id INTEGER PRIMARY KEY,
+    food TEXT,
+    expiration TEXT,
+    quantity INTEGER,
+    aisle INTEGER);
+
+INSERT INTO marketplace (food, expiration,quantity,aisle)
+        VALUES("pasta","2022-08-01",23,7 ); 
+INSERT INTO marketplace (food, expiration,quantity,aisle)
+        VALUES("rice","2022-09-01",30,7);
+INSERT INTO marketplace (food, expiration,quantity,aisle)
+        VALUES("bread","2022-10-01",25,7);
+INSERT INTO marketplace (food, expiration,quantity,aisle)
+        VALUES("cooking oil","2022-11-01",18,6);
+INSERT INTO marketplace (food, expiration,quantity,aisle)
+        VALUES("milk","2022-11-01",31,11);
+INSERT INTO marketplace (food, expiration,quantity,aisle)
+        VALUES("egg","2022-09-01",17,11);
+INSERT INTO marketplace(food, expiration,quantity,aisle)
+        VALUES("cheese","2022-10-01",32,11);
+INSERT INTO marketplace (food, expiration,quantity,aisle)
+        VALUES("onion","2022-22-01",21,3);
+INSERT INTO marketplace(food, expiration,quantity,aisle)
+        VALUES("garlic","2022-11-01",20,3); 
+INSERT INTO marketplace(food, expiration,quantity,aisle)
+        VALUES("lettuce","2022-11-01",24,3);
+INSERT INTO marketplace(food, expiration,quantity,aisle)
+        VALUES("tomato","2022-11-01",19,3);
+INSERT INTO marketplace(food, expiration,quantity,aisle)
+        VALUES("mango","2022-11-01",15,3);
+INSERT INTO marketplace(food, expiration,quantity,aisle)
+        VALUES("salt","2022-15-06",45,2); 
+INSERT INTO marketplace(food, expiration,quantity,aisle)
+        VALUES("pepper","2022-15-05",41,2);
+INSERT INTO marketplace(food, expiration,quantity,aisle)
+        VALUES("paprika","2022-10-06",38,2);
+INSERT INTO marketplace(food, expiration,quantity,aisle)
+        VALUES("cayenne","2022-11-07",36,2);
+INSERT INTO marketplace(food, expiration,quantity,aisle)
+        VALUES("honey","2022-04-05",36,2); 
+INSERT INTO marketplace(food, expiration,quantity,aisle)
+        VALUES("sugar","2022-09-08",41,2);
+INSERT INTO marketplace(food, expiration,quantity,aisle)
+        VALUES("cumin","2022-10-06",37,2);
+INSERT INTO marketplace(food, expiration,quantity,aisle)
+        VALUES("basil","2011-11-01",38,2);
+INSERT INTO marketplace(food, expiration,quantity,aisle)
+        VALUES("chicken","2022-08-01",12,9);
+INSERT INTO marketplace(food, expiration,quantity,aisle)
+        VALUES("beef","2022-09-01",13,9);
+INSERT INTO marketplace(food, expiration,quantity,aisle)
+        VALUES("pork","2022-10-01",10,9);
+
+SELECT food, MAX(quantity) FROM marketplace;
+
+SELECT food, MIN(quantity) FROM marketplace;
+
+SELECT food, avg(quantity) as avg_quantity
+
+FROM marketplace 
+
+GROUP BY food
+
+HAVING avg_quantity>19;
+
+ SELECT COUNT (*),
+
+  CASE 
+
+  WHEN quantity > 39 THEN "lots of invenory"
+
+  WHEN quantity > 25 THEN "restock in 2 weeks"
+
+  WHEN quantity > 15 THEN "restock this week"
+  
+  ELSE "restock tomorrow"
+
+  END as "restock_matrix" FROM marketplace
+
+  GROUP BY "restock_matrix";
+  
+  
+SELECT food,quantity FROM marketplace 
+WHERE quantity >=35 OR aisle <4;
+
+SELECT food,quantity FROM marketplace 
+WHERE quantity<20 AND aisle >4;
