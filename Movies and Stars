@@ -1,0 +1,141 @@
+CREATE TABLE moviestars (id INTEGER PRIMARY KEY,
+    starname TEXT,
+    birthdate TEXT,
+    age INTEGER);
+    
+INSERT INTO moviestars (starname, birthdate, age)
+        VALUES("TOM HOLLAND", "June 1, 1996", 27);
+        
+INSERT INTO moviestars (starname, birthdate, age)
+        VALUES("DWAYNE JOHNSON", "May 2, 1972", 51);
+        
+INSERT INTO moviestars (starname, birthdate, age)
+        VALUES("LEONARDO DICAPRIO", "November 11, 1974", 48);
+INSERT INTO moviestars (starname, birthdate, age)
+        VALUES("WILL SMITH", "September 25, 1968", 54);
+INSERT INTO moviestars (starname, birthdate, age)
+        VALUES("JACKIE CHAN", "April 7, 1954", 69);
+INSERT INTO moviestars (starname, birthdate, age)
+        VALUES("ZENDAYA", "September 1, 1996", 26);
+INSERT INTO moviestars (starname, birthdate, age)
+        VALUES("EMMA WATSON", "April 15, 1990", 33);
+INSERT INTO moviestars (starname, birthdate, age)
+        VALUES("MARGOT ROBBIE", "July 2, 1990", 33);
+INSERT INTO moviestars (starname, birthdate, age)
+        VALUES("SKAI JACKSON", "April 8, 2002", 21);
+INSERT INTO moviestars (starname, birthdate, age)
+        VALUES("JENNIFER ANISTON", "February 11, 1969", 54);
+INSERT INTO moviestars (starname, birthdate, age)
+        VALUES("CAMILA MENDES", "June 29, 1994", 29);
+INSERT INTO moviestars (starname, birthdate, age)
+        VALUES("CHRIS TUCKER", "August 31, 1971", 51);
+INSERT INTO moviestars (starname, birthdate, age)
+        VALUES("MARTIN LAWRENCE", "April 16, 1965", 58);
+INSERT INTO moviestars (starname, birthdate, age)
+        VALUES("WILL FERRELL", "July 16, 1967", 56);
+
+CREATE TABLE movies_played (id INTEGER PRIMARY KEY,
+    starname TEXT,
+    movie_name TEXT,
+    rating REAL);
+INSERT INTO movies_played (starname, movie_name, rating)
+        VALUES("TOM HOLLAND", "Avengers: Infinity War", 8.5);
+INSERT INTO movies_played (starname, movie_name, rating)
+        VALUES("TOM HOLLAND", "Spider-Man: No Way Home", 8.2);
+INSERT INTO movies_played (starname, movie_name, rating)
+        VALUES("TOM HOLLAND", "Uncharted", 6.3);
+INSERT INTO movies_played (starname, movie_name, rating)
+        VALUES("TOM HOLLAND", "Spider-Man: Homecoming", 7.4);
+INSERT INTO movies_played (starname, movie_name, rating)
+        VALUES("DWAYNE JOHNSON","Black Adam", 3.8);
+INSERT INTO movies_played (starname, movie_name, rating)
+        VALUES("DWAYNE JOHNSON","The Other Guys", 7.9);
+INSERT INTO movies_played (starname, movie_name, rating)
+        VALUES("DWAYNE JOHNSON","Moanna", 9.5);
+INSERT INTO movies_played (starname, movie_name, rating)
+        VALUES("LEONARDO DICAPRIO","The Wolf of Wall Street", 8.0);
+INSERT INTO movies_played (starname, movie_name, rating)
+        VALUES("LEONARDO DICAPRIO","TITANIC", 8.9);
+INSERT INTO movies_played (starname, movie_name, rating)
+        VALUES("LEONARDO DICAPRIO","The Revenant", 8.0);
+INSERT INTO movies_played (starname, movie_name, rating)
+        VALUES("WILL SMITH","Focus", 5.6);
+INSERT INTO movies_played (starname, movie_name, rating)
+        VALUES("WILL SMITH","Bad Boys", 6.8);
+INSERT INTO movies_played (starname, movie_name, rating)
+        VALUES("WILL SMITH","Suicide Squad", 4.5);
+INSERT INTO movies_played (starname, movie_name, rating)
+        VALUES("WILL SMITH","Hitch", 6.6);
+INSERT INTO movies_played (starname, movie_name, rating)
+        VALUES("JACKIE CHAN","Kung Fu Panda", 7.6);
+INSERT INTO movies_played (starname, movie_name, rating)
+        VALUES("JACKIE CHAN","Rush Hour", 7.0);
+INSERT INTO movies_played (starname, movie_name, rating)
+        VALUES("ZENDAYA","Spider-Man: No Way Home", 8.2);
+INSERT INTO movies_played (starname, movie_name, rating)
+        VALUES("ZENDAYA","Dune", 8.0);
+INSERT INTO movies_played (starname, movie_name, rating)
+        VALUES("EMMA WATSON","The Perks of Being a Wallflower", 7.9);
+INSERT INTO movies_played (starname, movie_name, rating)
+        VALUES("MARGOT ROBBIE","Suicide Squad", 5.9);
+INSERT INTO movies_played (starname, movie_name, rating)
+        VALUES("MARGOT ROBBIE","Focus", 5.6);
+INSERT INTO movies_played (starname, movie_name, rating)
+        VALUES("MARGOT ROBBIE","Barbie", 8.8);
+INSERT INTO movies_played (starname, movie_name, rating)
+        VALUES("SKAI JACKSON","The Watsons Go to Birmingham", 7.6);
+INSERT INTO movies_played (starname, movie_name, rating)
+        VALUES("JENNIFER ANISTON","Just Go with It", 6.4);
+INSERT INTO movies_played (starname, movie_name, rating)
+        VALUES("JENNIFER ANISTON","The Iron Giant", 6.4);
+INSERT INTO movies_played (starname, movie_name, rating)
+        VALUES("CAMILA MENDES","The Perfect Date", 5.8);
+INSERT INTO movies_played (starname, movie_name, rating)
+        VALUES("CHRIS TUCKER","The Fifth Element", 7.6);
+INSERT INTO movies_played (starname, movie_name, rating)
+        VALUES("CHRIS TUCKER","Rush Hour", 7.0);
+INSERT INTO movies_played (starname, movie_name, rating)
+        VALUES("MARTIN LAWRENCE","Bad Boys", 6.8);
+INSERT INTO movies_played (starname, movie_name, rating)
+        VALUES("MARTIN LAWRENCE","Big Momma's House", 5.2);
+INSERT INTO movies_played (starname, movie_name, rating)
+        VALUES("WILL FERRELL","The Other Guys", 7.9);
+INSERT INTO movies_played (starname, movie_name, rating)
+        VALUES("WILL FERRELL","Megamind", 7.3);
+INSERT INTO movies_played (starname, movie_name, rating)
+        VALUES("WILL FERRELL","Barbie", 8.8);
+
+
+SELECT s.starname, age, movie_name
+
+FROM moviestars s
+
+INNER JOIN movies_played p
+
+ON s.id=p.id
+
+WHERE s.starname = p.starname
+
+GROUP BY s.starname;
+
+SELECT c.starname,c.age,sum(o.rating) as total_rating
+
+FROM moviestars c
+
+LEFT OUTER JOIN movies_played o
+
+ON c.id=o.id
+
+GROUP BY c.starname
+
+ORDER BY total_rating desc;
+
+SELECT a.starname, a.birthdate, b.rating
+
+FROM moviestars a
+
+LEFT OUTER JOIN movies_played b
+
+ON a.id=b.id;
+
+
