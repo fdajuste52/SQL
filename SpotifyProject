@@ -1,0 +1,55 @@
+CREATE TABLE BIT_DB.Spotifydata (
+id integer PRIMARY KEY,
+artist_name varchar NOT NULL,
+track_name varchar NOT NULL,
+track_id varchar NOT NULL,
+popularity integer NOT NULL,
+danceability decimal(4,3) NOT NULL,
+energy decimal(4,3) NOT NULL,
+song_key integer NOT NULL,
+loudness decimal(5,3) NOT NULL,
+song_mode integer NOT NULL,
+speechiness decimal(5,4) NOT NULL,
+acousticness decimal(6,5) NOT NULL,
+instrumentalness decimal(8,7) NOT NULL,
+liveness decimal(5,4) NOT NULL,
+valence decimal(4,3) NOT NULL,
+tempo decimal(6,3) NOT NULL,
+duration_ms integer NOT NULL,
+time_signature integer NOT NULL );
+
+SELECT artist_name, track_name, SUM(popularity) AS total_popularity 
+FROM SpotifyData GROUP BY track_name;
+
+SELECT artist_name, track_nmae, SUM(popularity) AS total_popluarity FROM SpotifyData
+    GROUP BY type
+    HAVING total_popularity > 85;
+
+SELECT COUNT(*) AS Popularity_case_total,
+    CASE 
+        WHEN popularity > 90 THEN "above max"
+        WHEN popularity > 80 THEN "above target"
+        WHEN popularity > 70 THEN "within target"
+        ELSE "below target"
+    END as "popularity_target"
+FROM SpotifyData
+GROUP BY popularity_target;
+
+
+/*Calculate the average popularity for the artists in the Spotify data table. 
+Then, for every artist with an average popularity of 90 or above, show their name, 
+their average popularity, and label them as a “Top Star”.*/
+
+WITH popularity_average_CTE AS (
+SELECT s.artist_name,
+AVG(s.popularity) AS average_popularity
+FROM SpotifyData s 
+GROUP BY s.artist_name
+)
+ 
+SELECT  artist_name,
+        average_popularity,
+        'Top Star' AS tag
+FROM popularity_average_CTE
+WHERE average_popularity>=90;
+
